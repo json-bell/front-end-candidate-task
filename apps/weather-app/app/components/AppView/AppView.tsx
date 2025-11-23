@@ -5,6 +5,7 @@ import styles from "./AppView.module.scss";
 import SearchBar from "../SearchBar/SearchBar";
 import PercentageCard from "../PercentCard/PercentCard";
 import CurrentDaySummary from "../CurrentDaySummary/CurrentDaySummary";
+import TemperatureUnitSelector from "../TemperatureUnitSelector/TemperatureUnitSelector";
 
 export const AppView = () => {
   const weatherData = useWeatherData();
@@ -17,26 +18,7 @@ export const AppView = () => {
       <div className={styles.dashboardWrapper}>
         <div className={styles.dashboard}>
           <h2 className={styles.dashboardTitle}>Day Overview</h2>
-          <div className={styles.temperatureSelectors}>
-            <label>
-              <input
-                type="radio"
-                value={"Celsius"}
-                className={"visually-hidden"}
-                name="temperature-unit-radios"
-              />
-              C
-            </label>
-            <label>
-              <input
-                type="radio"
-                value={"Fahrenheit"}
-                className={"visually-hidden"}
-                name="temperature-unit-radios"
-              />
-              F
-            </label>
-          </div>
+          <TemperatureUnitSelector />
           <div className={styles.dashboardData}>
             <div
               style={{

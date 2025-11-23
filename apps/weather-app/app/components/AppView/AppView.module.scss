@@ -39,31 +39,3 @@
     grid-column: span 2;
   }
 }
-
-.temperatureSelectors {
-  justify-self: end;
-  display: flex;
-  gap: 8px;
-
-  label {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 54px;
-    width: 54px;
-    border-radius: 54px;
-    background-color: var(--radio-background);
-    color: var(--radio-stroke);
-
-    &:has(input:checked) {
-      background-color: var(--radio-active-background);
-      color: var(--radio-active-stroke);
-    }
-
-    &:has(input:focus-visible) {
-      outline: 2px solid var(--focus-outline);
-      outline-offset: 2px;
-    }
-  }
-}
