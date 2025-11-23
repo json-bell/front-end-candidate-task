@@ -1,4 +1,22 @@
-# Frontend Exercise
+# Submission details for Jason Bell
+
+Please create a `.env.local` file amd add your `API_KEY` from [Visual Crossing Weather API](https://www.visualcrossing.com/)
+
+```bash
+echo "API_KEY=<your_api_key>" > .env.local
+```
+
+## Questions
+
+These are questions / assumptions that in a non-tech test environment I would reach out or ask for clarifications around:
+
+- Extra icons - the API returns 9 possible icons, the Figma only shows 4 specific versions
+  - We'll just reuse the ones that are available for now, with extension of finding some better ones
+- How to parse the conditions?
+  - Since the `conditions` API field seems to be a set of joint descriptors - do we want the first? Do we want a priority order?
+  - We'll go with the last of the fields, as it seems to be the most descriptive from the data I've seen so far
+
+# Original Readme
 
 ![image 1](https://github.com/echo724/notion2md/assets/78376735/6b880ad1-3ff2-4cdd-8d06-ff708314772d)
 
@@ -21,7 +39,7 @@ You have complete freedom over how and how long you want to spend to deliver the
 - Users can see relevant weather information based on their search.
 - Handle the case of no data being available for a search.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
 ## Run tasks
 

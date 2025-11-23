@@ -1,22 +1,30 @@
-export async function fetchWeather(location: string): Promise<any> {
+import { WeatherResponse } from "./schema";
+
+/** Using https://www.visualcrossing.com/weather-query-builder/ to build a specific query to get:
+ * - Current information
+ * - 5 day forecast
+ */
+export async function fetchWeather(location: string): Promise<WeatherResponse> {
   const apiKey = process.env.API_KEY;
 
   if (!apiKey) throw new Error("Missing API_KEY env variable");
 
-  // from https://www.visualcrossing.com/support/weather-api-ai-code-generator/
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(
-    location
-  )}?key=${apiKey}&unitGroup=uk&contentType=json`;
+  /** Build with https://www.visualcrossing.com/weather-query-builder/ to retrieve specific information */
+  const url =
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURI(
+      location
+    )}/next7days/next6days?` +
+    `unitGroup=uk` +
+    `&elements=cloudcover,conditions,datetime,humidity,icon,sunrise,sunset,temp,tempmax,tempmin` +
+    `&include=days,current` +
+    `&key=${apiKey}` +
+    `&contentType=json`;
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
-  } catch (error: any) {
-    console.error("Error fetching weather data:", error);
-    throw new Error(error);
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Weather API failed: ${res.status}`);
   }
+
+  return res.json() as Promise<WeatherResponse>;
 }
