@@ -14,6 +14,8 @@ const config: Config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/apps/weather-app',
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  forceExit: true // tests are hanging without it, in a more built environment this would need looking into
 };
 
 export default createJestConfig(config);
