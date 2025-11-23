@@ -1,6 +1,7 @@
 "use client";
 import { WeatherResponse } from "@/app/api/weather/schema";
 import { createContext, useState } from "react";
+import { LocationChangeHandler } from "./types";
 
 const placeholderWeather = {
   data: null,
@@ -11,7 +12,7 @@ const placeholderWeather = {
 
 export const DataContext = createContext<{
   data: WeatherResponse | null;
-  onLocationChange: (location: string) => Promise<WeatherResponse | null>;
+  onLocationChange: LocationChangeHandler;
 }>(placeholderWeather);
 
 export function DataProvider({

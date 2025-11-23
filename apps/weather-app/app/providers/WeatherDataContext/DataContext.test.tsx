@@ -1,7 +1,8 @@
-import { act, ReactNode, useContext } from "react";
+import { act, ReactNode } from "react";
 import { renderHook } from "@testing-library/react";
 import { useWeatherData } from "./useWeatherData";
-import { DataContext, DataProvider } from "./DataContext";
+import { DataProvider } from "./DataContext";
+import { useLocationChange } from "./useLocationChange";
 
 describe("useWeatherData", () => {
   it("returns null when no provider is used", () => {
@@ -24,8 +25,8 @@ describe("useWeatherData", () => {
   });
 });
 
-describe("DataContext", () => {
-  it.only("fetches new data when location changes", async () => {
+describe("useLocationChange", () => {
+  it("fetches new data when location changes", async () => {
     // fetch is mocked in jest.setup.ts
 
     const mockInitialData = { location: "default" } as any;
@@ -37,15 +38,15 @@ describe("DataContext", () => {
 
     const useCombinedHooks = () => {
       const weatherData = useWeatherData();
-      const context = useContext(DataContext);
-      return { weatherData, context };
+      const onLocationChange = useLocationChange();
+      return { weatherData, onLocationChange };
     };
     const { result } = renderHook(() => useCombinedHooks(), { wrapper });
 
     expect(result.current.weatherData).toEqual(mockInitialData);
 
     await act(async () => {
-      await result.current.context.onLocationChange("newLocation");
+      await result.current.onLocationChange("newLocation");
     });
 
     expect(result.current.weatherData).toMatchObject({
