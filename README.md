@@ -15,6 +15,7 @@ These are questions / assumptions that in a non-tech test environment I would re
 - How to parse the conditions?
   - Since the `conditions` API field seems to be a set of joint descriptors - do we want the first? Do we want a priority order?
   - We'll go with the last of the fields, as it seems to be the most descriptive from the data I've seen so far
+- Line Height in Figma seems to be 43.5 in most places, we'll ignore it
 
 # Original Readme
 
