@@ -1,0 +1,9 @@
+
+echo "Linting..."
+npx nx lint weather-app
+
+echo "Checking types..."
+npx tsc --noEmit -p apps/weather-app/tsconfig.json
+
+echo "Running tests..."
+npx nx test weather-app
