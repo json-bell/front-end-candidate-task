@@ -1,13 +1,13 @@
-import styles from "./page.module.css";
 import { fetchWeather } from "./api/weather/fetchWeather";
+import { DataProvider } from "./providers/WeatherDataContext/DataContext";
 
 export default async function Index() {
-  // Initial server-side call to have first-paint with SSR data
+  // Initial server-side call to have first paint with SSR fetched data
   const weatherData = await fetchWeather("Brighton");
 
   return (
-    <div className={styles.page}>
+    <DataProvider initialData={weatherData}>
       <pre>{JSON.stringify(weatherData, null, 2)}</pre>
-    </div>
+    </DataProvider>
   );
 }
