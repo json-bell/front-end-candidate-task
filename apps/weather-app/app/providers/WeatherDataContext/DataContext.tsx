@@ -30,11 +30,8 @@ export function DataProvider({
       `/api/weather?location=${encodeURI(location)}`
     );
 
-    console.log({ response });
-
     if (response.ok) {
       const newData: WeatherResponse = await response.json();
-      console.log({ newData });
       setData(newData);
       return newData;
     } else {
