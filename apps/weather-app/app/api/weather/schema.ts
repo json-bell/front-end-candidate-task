@@ -41,7 +41,7 @@ export interface WeatherDay {
 
 export interface CurrentConditions
   extends Omit<WeatherDay, "tempmin" | "tempmax"> {
-  /** Time with format `HH:MM:SS` */
+  /** Time with format `HH:mm:SS` */
   datetime: string; // we retype this for new JSDoc with different type description
 }
 

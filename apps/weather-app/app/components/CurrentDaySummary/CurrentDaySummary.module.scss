@@ -1,0 +1,32 @@
+.daySummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  .locationName {
+    font-size: 64px;
+    font-weight: 400;
+  }
+
+  .date {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  .temperature {
+    font-size: 120px;
+    font-weight: 400;
+    display: flex;
+
+    .degrees {
+      place-self: center;
+      color: var(--text-degrees);
+      font-size: 48px;
+    }
+  }
+
+  .condition {
+    font-size: 48px;
+  }
+}
