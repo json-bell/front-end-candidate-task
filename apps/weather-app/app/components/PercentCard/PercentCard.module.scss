@@ -1,0 +1,35 @@
+.percentageCard {
+  width: 100%;
+  background-color: var(--surface);
+  border-radius: 20px;
+  padding: 8px 16px;
+
+  .meterWrapper {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .meterTrack {
+      grid-column: span 2;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      height: 20px;
+      background-color: var(--meter-track);
+      width: 100%;
+      .meter {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .greenMeter {
+        background-color: var(--meter-fill-green);
+      }
+      .yellowMeter {
+        background-color: var(--meter-fill-yellow);
+      }
+    }
+  }
+}
