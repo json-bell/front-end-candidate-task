@@ -13,7 +13,6 @@ export const AppView = () => {
       </div>
       <div className={styles.dashboardWrapper}>
         <div className={styles.dashboard}>
-          <h2 className={styles.dashboardTitle}>Day Overview</h2>
           <TemperatureUnitSelector />
           <DashboardDetails />
         </div>

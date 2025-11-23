@@ -1,11 +1,14 @@
 import styles from "./PercentCard.module.scss";
 
-interface PercentCardProps {
+export interface PercentCardProps {
   titleText: string;
   percentage: number;
   color: "green" | "yellow";
 }
 
+/** A server card component that renders data passed to it,
+ * rendering the percentage as a meter with the color provided
+ */
 export default function PercentageCard({
   titleText,
   percentage,
@@ -13,8 +16,8 @@ export default function PercentageCard({
 }: PercentCardProps) {
   return (
     <div className={styles.percentageCard}>
-      <h3>{titleText}</h3>
-      <span>{percentage}%</span>
+      <h3 className={styles.cardTitle}>{titleText}</h3>
+      <span className={styles.value}>{percentage}%</span>
       <div className={styles.meterWrapper} aria-hidden>
         <span style={{ gridColumn: "span 2", placeSelf: "flex-end" }}>%</span>
         <span className={styles.meterTrack}>
