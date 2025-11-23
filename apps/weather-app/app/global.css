@@ -11,6 +11,31 @@ body {
   font-family: inherit;
   line-height: inherit;
   margin: 0;
+
+  /* START COLOURS */
+  --background: #100e1d;
+  --surface: #1e213a;
+  --text: white;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-degrees: #cdcdcd;
+
+  --focus-outline: cyan;
+
+  --button-stroke: black;
+  --button-background: white;
+
+  --radio-stroke: #ffffff;
+  --radio-background: #585676;
+  --radio-active-stroke: #000000;
+  --radio-active-background: #ffffff;
+
+  --meter-track: white;
+  --meter-fill-green: #a9ff53;
+  --meter-fill-yellow: #faff00;
+
+  --input-stroke: #111111;
+  --input-background: #ffffff;
+  /* END COLOURS */
 }
 h1,
 h2,
