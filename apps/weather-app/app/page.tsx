@@ -1,4 +1,5 @@
 import { fetchWeather } from "./api/weather/fetchWeather";
+import { TemperatureUnitProvider } from "./providers/TemperatureUnitProvider/TemperatureUnitContext";
 import { DataProvider } from "./providers/WeatherDataContext/DataContext";
 
 export default async function Index() {
@@ -7,7 +8,9 @@ export default async function Index() {
 
   return (
     <DataProvider initialData={weatherData}>
-      <pre>{JSON.stringify(weatherData, null, 2)}</pre>
+      <TemperatureUnitProvider>
+        <pre>{JSON.stringify(weatherData, null, 2)}</pre>
+      </TemperatureUnitProvider>
     </DataProvider>
   );
 }
