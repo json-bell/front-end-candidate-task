@@ -21,7 +21,10 @@ export async function fetchWeather(location: string): Promise<WeatherResponse> {
     `&key=${apiKey}` +
     `&contentType=json`;
 
-  const res = await fetch(url);
+  // Refresh SSR API call every 5 minutes - fewer and quicker calls for the initial load
+  // Depending on daily user count, we might want more regular cache refreshes
+  // but also weather data isn't particularly dynamic so we can still optimize with caching
+  const res = await fetch(url, { next: { revalidate: 300 } });
 
   if (!res.ok) {
     throw new Error(`Weather API failed: ${res.status}`);
