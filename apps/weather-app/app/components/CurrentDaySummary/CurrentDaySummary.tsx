@@ -22,7 +22,7 @@ export default function CurrentDaySummary() {
         />
       </div>
       <span className={styles.temperature}>
-        {formatTemperature(weatherData?.currentConditions.temp ?? 0, {
+        {formatTemperature(weatherData?.currentConditions.temp, {
           includeUnit: false,
         })}
         <span className={styles.degrees}>{temperatureSymbol}</span>

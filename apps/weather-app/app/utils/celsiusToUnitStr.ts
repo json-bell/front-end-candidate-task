@@ -21,19 +21,22 @@ function celsiusToFahrenheit(celsius: number): number {
  *
  * @returns A string parsed from the input temperature and the destination unit, rounded to the nearest whole number
  */
-export const celsiusToUnitStr = (
-  celsius: number,
+export function celsiusToUnitStr(
+  celsius: number | undefined | null,
   unit: TemperatureUnit,
   options?: { includeUnit?: boolean }
-): string => {
+): string {
+  const temperatureSymbol = unit === "celsius" ? "°C" : "°F";
   const { includeUnit = true } = options || {};
+
+  if (celsius === undefined || celsius === null)
+    return includeUnit ? `-${temperatureSymbol}` : "-";
+
   const tempNumber = Math.round(
     unit === "celsius" ? celsius : celsiusToFahrenheit(celsius)
   );
 
   if (!includeUnit) return tempNumber.toString();
 
-  const temperatureSymbol = unit === "celsius" ? "°C" : "°F";
-
   return `${tempNumber}${temperatureSymbol}`;
-};
+}

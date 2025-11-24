@@ -10,15 +10,14 @@ export function useTemperatureFormat() {
    * @param celsiusTemp - Temperature in Celsius
    * @returns Rounded temperature in unit decided according to context
    */
-  const formatTemperature = (
+  function formatTemperature(
     celsiusTemp: number | undefined | null,
     options: {
       includeUnit?: boolean;
     } = {}
-  ): string => {
-    if (celsiusTemp === undefined || celsiusTemp === null) return "-";
+  ): string {
     return celsiusToUnitStr(celsiusTemp, temperatureUnit, options);
-  };
+  }
 
   const temperatureSymbol = temperatureUnit === "celsius" ? "°C" : "°F";
 

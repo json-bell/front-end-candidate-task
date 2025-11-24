@@ -30,11 +30,11 @@ export default function DashboardDetails() {
   const singleValueFields: ValueCardProps[] = [
     {
       title: "Max Temp.",
-      value: formatTemperature(weatherData?.days[0].tempmax ?? 0),
+      value: formatTemperature(weatherData?.days[0].tempmax),
     },
     {
       title: "Min Temp.",
-      value: formatTemperature(weatherData?.days[0].tempmin ?? 0),
+      value: formatTemperature(weatherData?.days[0].tempmin),
     },
     {
       title: "Sunrise",
