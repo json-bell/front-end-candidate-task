@@ -25,6 +25,7 @@ export default function TemperatureUnitSelector() {
               type="radio"
               value={"celsius"}
               className={"visually-hidden"}
+              aria-label={`Display temperatures in ${value}`}
               name="temperature-unit-radios"
               checked={temperatureUnit === value}
               onChange={() => {
