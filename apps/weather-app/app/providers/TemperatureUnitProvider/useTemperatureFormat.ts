@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TemperatureUnitContext } from "./TemperatureUnitContext";
 import { celsiusToUnitStr } from "@/app/utils/celsiusToUnitStr";
 
-export const useFormatTemperature = () => {
+export function useTemperatureFormat() {
   const { temperatureUnit } = useContext(TemperatureUnitContext);
 
   /** Formats the temperature according to the temperature unit in the TemperatureUnitContext
@@ -20,5 +20,7 @@ export const useFormatTemperature = () => {
     return celsiusToUnitStr(celsiusTemp, temperatureUnit, options);
   };
 
-  return formatTemperature;
-};
+  const temperatureSymbol = temperatureUnit === "celsius" ? "°C" : "°F";
+
+  return { formatTemperature, temperatureSymbol, temperatureUnit };
+}

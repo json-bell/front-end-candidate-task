@@ -3,7 +3,7 @@ import { useWeatherData } from "@/app/providers/WeatherDataContext/useWeatherDat
 import styles from "./DashboardDetails.module.scss";
 import PercentageCard, { PercentCardProps } from "../PercentCard/PercentCard";
 import ValueCard, { ValueCardProps } from "../ValueCard/ValueCard";
-import { useFormatTemperature } from "@/app/providers/TemperatureUnitProvider/useFormatTemperature";
+import { useTemperatureFormat } from "@/app/providers/TemperatureUnitProvider/useTemperatureFormat";
 import { formatDate } from "@/app/utils/formatDate";
 import ForecastDayCard, {
   ForecastDayCardProps,
@@ -12,7 +12,7 @@ import { parsePrimaryCondition } from "@/app/utils/parsePrimaryCondition";
 
 export default function DashboardDetails() {
   const weatherData = useWeatherData();
-  const formatTemperature = useFormatTemperature();
+  const { formatTemperature } = useTemperatureFormat();
 
   const percentageFields: PercentCardProps[] = [
     {

@@ -3,12 +3,12 @@ import { useWeatherData } from "@/app/providers/WeatherDataContext/useWeatherDat
 import styles from "./CurrentDaySummary.module.scss";
 import { formatDate } from "@/app/utils/formatDate";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
-import { useFormatTemperature } from "@/app/providers/TemperatureUnitProvider/useFormatTemperature";
+import { useTemperatureFormat } from "@/app/providers/TemperatureUnitProvider/useTemperatureFormat";
 import { parsePrimaryCondition } from "@/app/utils/parsePrimaryCondition";
 
 export default function CurrentDaySummary() {
   const weatherData = useWeatherData();
-  const formatTemp = useFormatTemperature();
+  const { formatTemperature, temperatureSymbol } = useTemperatureFormat();
 
   return (
     <div className={styles.daySummary}>
@@ -22,10 +22,10 @@ export default function CurrentDaySummary() {
         />
       </div>
       <span className={styles.temperature}>
-        {formatTemp(weatherData?.currentConditions.temp ?? 0, {
+        {formatTemperature(weatherData?.currentConditions.temp ?? 0, {
           includeUnit: false,
         })}
-        <span className={styles.degrees}>°C</span>
+        <span className={styles.degrees}>{temperatureSymbol}</span>
       </span>
       <span className={styles.condition}>
         {parsePrimaryCondition(weatherData?.currentConditions.conditions)}

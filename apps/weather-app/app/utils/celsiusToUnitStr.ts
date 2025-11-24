@@ -1,5 +1,10 @@
 export type TemperatureUnit = "celsius" | "fahrenheit";
 
+/** Simple number conversion from celsius to fahrenheit */
+function celsiusToFahrenheit(celsius: number): number {
+  return (celsius * 9) / 5 + 32;
+}
+
 /**
  *
  * In this case:
@@ -19,13 +24,16 @@ export type TemperatureUnit = "celsius" | "fahrenheit";
 export const celsiusToUnitStr = (
   celsius: number,
   unit: TemperatureUnit,
-  { includeUnit = true }: { includeUnit?: boolean }
+  options?: { includeUnit?: boolean }
 ): string => {
-  if (unit === "fahrenheit")
-    throw new Error("Fahrenheit implementation pending");
+  const { includeUnit = true } = options || {};
+  const tempNumber = Math.round(
+    unit === "celsius" ? celsius : celsiusToFahrenheit(celsius)
+  );
 
-  const temp = `${Math.round(celsius)}`;
+  if (!includeUnit) return tempNumber.toString();
 
-  if (!includeUnit) return temp;
-  return `${temp}°C`;
+  const temperatureSymbol = unit === "celsius" ? "°C" : "°F";
+
+  return `${tempNumber}${temperatureSymbol}`;
 };
