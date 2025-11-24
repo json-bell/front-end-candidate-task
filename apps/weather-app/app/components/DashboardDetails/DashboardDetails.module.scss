@@ -14,4 +14,34 @@
     width: 100%;
     align-items: stretch;
   }
+
+  .twoCards {
+    display: grid;
+    gap: 40px;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 1240px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .fourCards {
+    display: grid;
+    gap: 40px;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    @media screen and (max-width: 1240px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .fiveForecasts {
+    max-width: 100%;
+    display: grid;
+    gap: 22px;
+    grid-auto-flow: column;
+    grid-column: minmax(186px, 1fr);
+    overflow-x: auto;
+    overflow-y: hidden; // added for safari appearing very oddly
+  }
 }

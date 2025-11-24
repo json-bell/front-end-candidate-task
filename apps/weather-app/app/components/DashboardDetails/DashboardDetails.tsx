@@ -64,13 +64,13 @@ export default function DashboardDetails() {
     <div className={styles.dashboardDetails}>
       <h2 className={styles.sectionTitle}>Day Overview</h2>
 
-      <div className={styles.cardsContainer}>
+      <div className={styles.twoCards}>
         {percentageFields.map((cardProps) => (
           <PercentageCard key={cardProps.titleText} {...cardProps} />
         ))}
       </div>
 
-      <div className={styles.cardsContainer}>
+      <div className={styles.fourCards}>
         {singleValueFields.map((cardProps) => (
           <ValueCard key={cardProps.title} {...cardProps} />
         ))}
@@ -78,7 +78,7 @@ export default function DashboardDetails() {
 
       <h2 className={styles.sectionTitle}>5 Day Forecast</h2>
 
-      <div className={styles.cardsContainer}>
+      <div className={styles.fiveForecasts}>
         {daySummaries?.map((cardProps) => (
           <ForecastDayCard key={cardProps.title} {...cardProps} />
         ))}

@@ -3,10 +3,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  padding: 16px 0px;
+  width: 29vw; // this instead of the 555 : 1365 ratio in the AppView
+
   .locationName {
     font-size: 64px;
-    font-weight: 400;
+    max-width: 100%;
+    text-wrap: wrap;
   }
 
   .date {
@@ -38,5 +41,6 @@
 
   .condition {
     font-size: 48px;
+    margin-top: 16px;
   }
 }
