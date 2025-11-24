@@ -20,6 +20,8 @@
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 29vw; // this instead of the 555 : 1365 ratio in the AppView
+
   @media screen and (max-width: 864px) {
     height: auto;
   }
