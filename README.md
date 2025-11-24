@@ -32,6 +32,9 @@ These are questions / assumptions that in a non-tech test environment I would re
   - Rounding up/down consistently
   - Round towards daytime (round sunrise up, round sunset down)
   - Round towards nighttime (flipped)
+- Design size and responsivity - the 1920 x 1080 is quite a large viewport, I tried to add some responsivity where possible
+- Best icon for no data? I prefer showing one of the icons compared to none, so we go with a neutral-ish icon
+- Loading state - right now, there's very little indication that the search has happened
 
 # Archived Readme
 

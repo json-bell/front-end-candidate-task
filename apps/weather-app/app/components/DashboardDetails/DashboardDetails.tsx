@@ -13,6 +13,7 @@ import { parsePercentage } from "@/app/utils/parsePercentage";
 import { useMemo } from "react";
 import { createFallbackDateStr } from "@/app/utils/createFallbackDateStr";
 
+/** This is the main section of the app, showing some further details on the current weather and the 5 day forecast */
 export default function DashboardDetails() {
   const clientFallbackDate = useMemo(() => new Date(), []);
   const weatherData = useWeatherData();

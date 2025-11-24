@@ -18,10 +18,12 @@
   }
 
   .icon {
+    // We resize the icon, since its square frame has too much spacing
     width: 60%;
     max-width: 400px;
     transform: scale(140%);
-    display: block;
+    display: flex;
+    justify-content: center;
     position: relative;
     top: 10px;
   }

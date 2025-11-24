@@ -8,6 +8,7 @@ import { parsePrimaryCondition } from "@/app/utils/parsePrimaryCondition";
 import { createFallbackDateStr } from "@/app/utils/createFallbackDateStr";
 import { useMemo } from "react";
 
+/** This component shows the main details of the current day, like the current temperature and conditions */
 export default function CurrentDaySummary() {
   const weatherData = useWeatherData();
   const { formatTemperature, temperatureSymbol } = useTemperatureFormat();
@@ -26,6 +27,7 @@ export default function CurrentDaySummary() {
       <div className={styles.icon}>
         <WeatherIcon
           icon={weatherData?.currentConditions.icon ?? "partly-cloudy-day"}
+          size="240px"
         />
       </div>
       <span className={styles.temperature}>

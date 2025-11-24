@@ -3,7 +3,7 @@
   height: 100vh;
   grid-template-columns: auto 1fr;
 
-  @media screen and (max-width: 864px) {
+  @media screen and (max-width: 992px) {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -20,10 +20,12 @@
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 29vw; // this instead of the 555 : 1365 ratio in the AppView
+  min-width: 29vw; // this instead of the 555 : 1365 ratio in the AppView
+  width: min-content;
 
-  @media screen and (max-width: 864px) {
+  @media screen and (max-width: 992px) {
     height: auto;
+    width: auto;
   }
 }
 
