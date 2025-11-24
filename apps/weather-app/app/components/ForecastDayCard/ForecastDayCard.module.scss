@@ -1,0 +1,30 @@
+.card {
+  width: 100%;
+  background-color: var(--surface);
+  border-radius: 20px;
+  padding: 8px 16px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+
+  .title {
+    font-size: 24px;
+  }
+  .condition {
+    font-size: 15px;
+  }
+  .temperatures {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+    .tempmax {
+      color: var(--text);
+    }
+    .tempmin {
+      color: var(--text-secondary);
+    }
+  }
+}

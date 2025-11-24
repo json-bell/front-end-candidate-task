@@ -8,6 +8,10 @@
  * @param conditions - Conditions string, a list of conditions separated by ", "
  * @returns The primary condition of the conditions given
  */
+export function parsePrimaryCondition(conditions: string): string;
+export function parsePrimaryCondition(
+  conditions: string | null | undefined
+): string | null | undefined;
 export function parsePrimaryCondition(conditions: string | null | undefined) {
   if (!conditions) return conditions;
   return conditions.split(", ")[0];

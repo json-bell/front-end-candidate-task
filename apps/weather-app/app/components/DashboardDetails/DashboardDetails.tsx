@@ -4,6 +4,11 @@ import styles from "./DashboardDetails.module.scss";
 import PercentageCard, { PercentCardProps } from "../PercentCard/PercentCard";
 import ValueCard, { ValueCardProps } from "../ValueCard/ValueCard";
 import { useFormatTemperature } from "@/app/providers/TemperatureUnitProvider/useFormatTemperature";
+import { formatDate } from "@/app/utils/formatDate";
+import ForecastDayCard, {
+  ForecastDayCardProps,
+} from "../ForecastDayCard/ForecastDayCard";
+import { parsePrimaryCondition } from "@/app/utils/parsePrimaryCondition";
 
 export default function DashboardDetails() {
   const weatherData = useWeatherData();
@@ -41,9 +46,19 @@ export default function DashboardDetails() {
     },
   ];
 
-  const daySummaries = weatherData?.days.slice(1).map((day) => {
-    return <pre key={day.datetime}>{JSON.stringify(day, null, 2)}</pre>;
-  });
+  const daySummaries = weatherData?.days
+    .slice(1, 6)
+    .map((day, index): ForecastDayCardProps => {
+      const dateLabel = index === 0 ? "Tomorrow" : formatDate(day.datetime);
+
+      return {
+        title: dateLabel,
+        condition: parsePrimaryCondition(day.conditions),
+        icon: day.icon,
+        tempmax: formatTemperature(day.tempmax),
+        tempmin: formatTemperature(day.tempmin),
+      };
+    });
 
   return (
     <div className={styles.dashboardDetails}>
@@ -63,7 +78,11 @@ export default function DashboardDetails() {
 
       <h2 className={styles.sectionTitle}>5 Day Forecast</h2>
 
-      <div className={styles.cardsContainer}>{daySummaries}</div>
+      <div className={styles.cardsContainer}>
+        {daySummaries?.map((cardProps) => (
+          <ForecastDayCard key={cardProps.title} {...cardProps} />
+        ))}
+      </div>
     </div>
   );
 }
