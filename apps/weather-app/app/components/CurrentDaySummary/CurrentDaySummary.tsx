@@ -15,7 +15,9 @@ export default function CurrentDaySummary() {
 
   return (
     <div className={styles.daySummary}>
-      <h1 className={styles.locationName}>{weatherData?.address}</h1>
+      <h1 className={styles.locationName}>
+        {weatherData?.address ?? "Unknown Location"}
+      </h1>
       <h2 className={styles.date}>
         {formatDate(
           weatherData?.days[0].datetime ?? createFallbackDateStr(clientDate, 0)
@@ -33,7 +35,8 @@ export default function CurrentDaySummary() {
         <span className={styles.degrees}>{temperatureSymbol}</span>
       </span>
       <span className={styles.condition}>
-        {parsePrimaryCondition(weatherData?.currentConditions.conditions)}
+        {parsePrimaryCondition(weatherData?.currentConditions.conditions) ??
+          "Please try again"}
       </span>
     </div>
   );
