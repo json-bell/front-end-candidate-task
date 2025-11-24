@@ -10,7 +10,13 @@ echo "API_KEY=<your_api_key>" > .env.local
 
 ## Questions & assumptions made during the task
 
-These are questions / assumptions that in a non-tech test environment I would reach out or ask for clarifications around:
+These are questions / assumptions that in a non-tech test environment I would reach out or ask for clarifications around. TLDR of the questions:
+
+- Some assumptions on Figma design intentions: 5 day forecast as next 5 days, max temp & min temp
+- Parsing of API data into the UI: icons (using `icons2`), and how to prioritise multiple `conditions`
+- Deeper dives: responsivity, accessibility, loading/no data states
+
+Detailed assumptions:
 
 - 5 day Forecast start: Fri, 26 may that seems like "today" in the designs, and the 5 day Forecast shows "Tomorrow", "Sat, 27th May"...
   - We'll assume the 5 day forecast is the next 5 days
@@ -23,7 +29,7 @@ These are questions / assumptions that in a non-tech test environment I would re
   - Icon is used without its frame in the sidebar, we position it as we can, noting some taller icons may cause overlap
 
 - How should we best parse the `conditions`?
-  - The API `conditions` field is a list of descriptions - do we want the first? Do we want a priority order?
+  - The API `conditions` field is a list of descriptions - do we want the first? Do we want a priority order? All is too cluttered
   - We'll go with the first of the fields, as it seems to be the most descriptive
 - Line Height in Figma seems to be 43.5px in most places so we'll ignore it and focus on text placement
 - Months in date format: which is better, `Sun, 23 Nov` or `Sun, 23 November`?
@@ -40,6 +46,10 @@ These are questions / assumptions that in a non-tech test environment I would re
 - Best icon for no data? I prefer showing one of the icons compared to none, so we go with a neutral-ish icon
 - Loading state - right now, there's very little indication that the search has happened
   - I added a spinner while the fetch happens
+- I might bring up accessibility depending on the standards:
+  - Focus outline (here we're used the orange from the icons for visible contrast)
+  - Contrast of the Percentage Meters - the yellow / green are quite bright next to the white track
+  - Placeholder text to indicate the purpose of the search bar
 
 # Archived Readme
 
