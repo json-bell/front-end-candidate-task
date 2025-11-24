@@ -1,15 +1,20 @@
 "use client";
 import { useState } from "react";
 import styles from "./SearchBar.module.scss";
+import { useLocationChange } from "@/app/providers/WeatherDataContext/useLocationChange";
 
-// interface SearchBarProps {
-//   _?: never;
-// }
-
-export default function SearchBar(/* {  }: SearchBarProps */) {
+export default function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
+  const onLocationChange = useLocationChange();
   return (
-    <form className={styles.searchBar}>
+    <form
+      className={styles.searchBar}
+      onSubmit={(e) => {
+        // prevent navigation
+        e.preventDefault();
+        onLocationChange(searchValue);
+      }}
+    >
       <input
         type="text"
         value={searchValue}
@@ -17,15 +22,7 @@ export default function SearchBar(/* {  }: SearchBarProps */) {
           setSearchValue(e.target.value);
         }}
       />
-      <button
-        type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          setSearchValue("");
-        }}
-      >
-        Go
-      </button>
+      <button type="submit">Go</button>
     </form>
   );
 }
