@@ -5,12 +5,17 @@
  */
 export function formatDate(dateString: string | undefined | null) {
   if (!dateString) return "-";
-  return formatter.format(new Date(dateString));
+
+  const date = new Date(dateString);
+
+  const weekday = new Intl.DateTimeFormat("en-GB", { weekday: "short" }).format(
+    date
+  );
+  const day = new Intl.DateTimeFormat("en-GB", { day: "2-digit" }).format(date);
+  const month = new Intl.DateTimeFormat("en-GB", { month: "short" }).format(
+    date
+  );
+
+  const formattedDate = `${weekday}, ${day} ${month}`;
+  return formattedDate;
 }
-
-// TODO - test, and expand between timezones etc.
-// This, like the celsiusToStr, is a temporary placeholder while building
-// the UI
-
-const options = { weekday: "short", day: "2-digit", month: "short" } as const;
-const formatter = new Intl.DateTimeFormat("en-UK", options);
