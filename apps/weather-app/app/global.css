@@ -26,6 +26,7 @@ body {
 
   --button-stroke: black;
   --button-background: white;
+  --button-active-background: #585676;
 
   --radio-stroke: #ffffff;
   --radio-background: #585676;
