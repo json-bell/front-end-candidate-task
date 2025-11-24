@@ -17,7 +17,7 @@ import { createFallbackDateStr } from "@/app/utils/createFallbackDateStr";
 export default function DashboardDetails() {
   const clientFallbackDate = useMemo(() => new Date(), []);
   const weatherData = useWeatherData();
-  const { formatTemperature } = useTemperatureFormat();
+  const { formatTemperature, temperatureSymbol } = useTemperatureFormat();
 
   const percentageFields: PercentCardProps[] = [
     {
@@ -35,11 +35,17 @@ export default function DashboardDetails() {
   const singleValueFields: ValueCardProps[] = [
     {
       title: "Max Temp.",
-      value: formatTemperature(weatherData?.days[0].tempmax),
+      value: formatTemperature(weatherData?.days[0].tempmax, {
+        includeUnit: false,
+      }),
+      greyUnit: temperatureSymbol,
     },
     {
       title: "Min Temp.",
-      value: formatTemperature(weatherData?.days[0].tempmin),
+      value: formatTemperature(weatherData?.days[0].tempmin, {
+        includeUnit: false,
+      }),
+      greyUnit: temperatureSymbol,
     },
     {
       title: "Sunrise",

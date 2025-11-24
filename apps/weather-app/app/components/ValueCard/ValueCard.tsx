@@ -3,16 +3,23 @@ import styles from "./ValueCard.module.scss";
 export interface ValueCardProps {
   title: string;
   value?: string | null;
-  /** If needed with the grey colour on the degrees C */
-  //   isTemp: boolean;
+  /**The grey colour displayed for the °C */
+  greyUnit?: string;
 }
 
-/** Formats key-value pairs on cards, for single-value fields of data */
-export default function ValueCard({ title, value = "-" }: ValueCardProps) {
+/** Server-side component that formats key-value pairs on cards, for single-value fields of data */
+export default function ValueCard({
+  title,
+  value = "-",
+  greyUnit,
+}: ValueCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.value}>{value}</div>
+      <div className={styles.value}>
+        {value}
+        {greyUnit && <span className={styles.greyUnit}>{greyUnit}</span>}
+      </div>
     </div>
   );
 }
