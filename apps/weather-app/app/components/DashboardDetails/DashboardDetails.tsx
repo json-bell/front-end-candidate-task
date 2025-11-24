@@ -9,8 +9,12 @@ import ForecastDayCard, {
   ForecastDayCardProps,
 } from "../ForecastDayCard/ForecastDayCard";
 import { parsePrimaryCondition } from "@/app/utils/parsePrimaryCondition";
+import { parsePercentage } from "@/app/utils/parsePercentage";
+import { useMemo } from "react";
+import { createFallbackDateStr } from "@/app/utils/createFallbackDateStr";
 
 export default function DashboardDetails() {
+  const clientFallbackDate = useMemo(() => new Date(), []);
   const weatherData = useWeatherData();
   const { formatTemperature } = useTemperatureFormat();
 
@@ -46,19 +50,25 @@ export default function DashboardDetails() {
     },
   ];
 
-  const daySummaries = weatherData?.days
-    .slice(1, 6)
-    .map((day, index): ForecastDayCardProps => {
-      const dateLabel = index === 0 ? "Tomorrow" : formatDate(day.datetime);
+  /** We specifically render 5, for when the API doesn't return sufficient data */
+  const daySummaries = [1, 2, 3, 4, 5].map((index): ForecastDayCardProps => {
+    const day = weatherData?.days[index];
 
-      return {
-        title: dateLabel,
-        condition: parsePrimaryCondition(day.conditions),
-        icon: day.icon,
-        tempmax: formatTemperature(day.tempmax),
-        tempmin: formatTemperature(day.tempmin),
-      };
-    });
+    const dateLabel =
+      index === 1
+        ? "Tomorrow"
+        : formatDate(
+            day?.datetime ?? createFallbackDateStr(clientFallbackDate, index)
+          );
+
+    return {
+      title: dateLabel,
+      condition: parsePrimaryCondition(day?.conditions) ?? "-",
+      icon: day?.icon ?? "partly-cloudy-day",
+      tempmax: formatTemperature(day?.tempmax),
+      tempmin: formatTemperature(day?.tempmin),
+    };
+  });
 
   return (
     <div className={styles.dashboardDetails}>
