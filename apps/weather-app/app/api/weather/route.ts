@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { fetchWeather } from "./fetchWeather";
 
-// ensure stale data is refetched after 5 minutes
-export const revalidate = 300;
+// force an uncached call to fetchWeather
+export const revalidate = 0;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
