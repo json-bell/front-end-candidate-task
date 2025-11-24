@@ -2,16 +2,20 @@
 
 Hi,
 
-Before running either the production or local builds, please create a `.env.local` file and add your `API_KEY` from [Visual Crossing Weather API](https://www.visualcrossing.com/)
+Before either running the dev server or creating a production bundle, please create a `.env.local` file and add your `API_KEY` from [Visual Crossing Weather API](https://www.visualcrossing.com/)
 
 ```bash
 echo "API_KEY=<your_api_key>" > .env.local
 ```
 
-## Questions
+## Questions & assumptions made during the task
 
 These are questions / assumptions that in a non-tech test environment I would reach out or ask for clarifications around:
 
+- 5 day Forecast start: Fri, 26 may that seems like "today" in the designs, and the 5 day Forecast shows "Tomorrow", "Sat, 27th May"...
+  - We'll assume the 5 day forecast is the next 5 days
+- Max temp \* 2 -> We make one of these Min temp, to match (what I'm assuming) is max and min temp in the 5 day forecast
+- Other comment in the Figma on the white bar: I'm assuming that was there to cover the yellow bar, from a copied 67%-length to the 29% displayed
 - Icons: 23 from the [Figma File](https://www.figma.com/design/FNdVsOUJA53CWMW9mnraYk/Weather-App?node-id=24-1131&t=HRyfXZzr6mChHOCj-0), with API returning (from [Visual Crossing icon docs](https://www.visualcrossing.com/resources/documentation/weather-api/defining-icon-set-in-the-weather-api/))
 
   - We use 16 with `icons2` option since `icons1` (9 slugs) doesn't have `showers-day` for Sun, 29 May
@@ -35,6 +39,7 @@ These are questions / assumptions that in a non-tech test environment I would re
 - Design size and responsivity - the 1920 x 1080 is quite a large viewport, I tried to add some responsivity where possible
 - Best icon for no data? I prefer showing one of the icons compared to none, so we go with a neutral-ish icon
 - Loading state - right now, there's very little indication that the search has happened
+  - I added a spinner while the fetch happens
 
 # Archived Readme
 
