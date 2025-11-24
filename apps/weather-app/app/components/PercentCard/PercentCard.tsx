@@ -16,7 +16,7 @@ export default function PercentageCard({
 }: PercentCardProps) {
   return (
     <div className={styles.percentageCard}>
-      <h3 className={styles.cardTitle}>{titleText}</h3>
+      <h2 className={styles.cardTitle}>{titleText}</h2>
       <span className={styles.value}>{percentage}%</span>
       <div className={styles.meterWrapper} aria-hidden>
         <span style={{ gridColumn: "span 2", placeSelf: "flex-end" }}>%</span>
