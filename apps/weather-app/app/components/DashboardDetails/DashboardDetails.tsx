@@ -18,12 +18,12 @@ export default function DashboardDetails() {
     {
       titleText: "Humidity",
       color: "green",
-      percentage: Math.round(weatherData?.currentConditions.humidity ?? 0),
+      percentage: parsePercentage(weatherData?.currentConditions.humidity),
     },
     {
       titleText: "Cloud Cover",
       color: "yellow",
-      percentage: Math.round(weatherData?.currentConditions.cloudcover ?? 0),
+      percentage: parsePercentage(weatherData?.currentConditions.cloudcover),
     },
   ];
 
