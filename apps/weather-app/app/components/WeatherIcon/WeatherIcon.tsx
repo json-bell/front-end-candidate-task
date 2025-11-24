@@ -1,4 +1,5 @@
 import { WeatherIconSlug } from "@/app/api/weather/schema";
+import { iconFileFromSlug } from "./iconLookup";
 
 interface WeatherIconProps {
   icon: WeatherIconSlug;
@@ -6,22 +7,18 @@ interface WeatherIconProps {
   size?: string;
 }
 
-export default function WeatherIcon({ icon, size }: WeatherIconProps) {
+export default function WeatherIcon({ icon, size = "100%" }: WeatherIconProps) {
+  const alt = `A ${icon.replaceAll("-", " ")} weather icon`;
+  const src = iconFileFromSlug(icon);
   return (
     <div
-      aria-label={icon.replaceAll("-", " ")}
       style={{
         width: size,
-        height: size,
         aspectRatio: "1 / 1",
-        backgroundColor: "grey",
-        borderRadius: "20px",
-        textAlign: "center",
-        padding: "20px",
+        height: "auto",
       }}
     >
-      PLACEHOLDER for icon: <pre>{icon}</pre>
-      {/* <Image></Image> */}
+      <img alt={alt} src={src} style={{ width: "100%", display: "block" }} />
     </div>
   );
 }

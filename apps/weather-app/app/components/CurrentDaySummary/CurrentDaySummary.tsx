@@ -16,7 +16,11 @@ export default function CurrentDaySummary() {
       <h2 className={styles.date}>
         {formatDate(weatherData?.days[0].datetime)}
       </h2>
-      <WeatherIcon icon={weatherData?.currentConditions.icon ?? "clear-day"} />
+      <div className={styles.icon}>
+        <WeatherIcon
+          icon={weatherData?.currentConditions.icon ?? "partly-cloudy-day"}
+        />
+      </div>
       <span className={styles.temperature}>
         {formatTemp(weatherData?.currentConditions.temp ?? 0)}{" "}
         <span className={styles.degrees}>deg C</span>

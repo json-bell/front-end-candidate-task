@@ -1,6 +1,8 @@
 # Submission details for Jason Bell
 
-Please create a `.env.local` file amd add your `API_KEY` from [Visual Crossing Weather API](https://www.visualcrossing.com/)
+Hi,
+
+Before running either the production or local builds, please create a `.env.local` file and add your `API_KEY` from [Visual Crossing Weather API](https://www.visualcrossing.com/)
 
 ```bash
 echo "API_KEY=<your_api_key>" > .env.local
@@ -10,19 +12,28 @@ echo "API_KEY=<your_api_key>" > .env.local
 
 These are questions / assumptions that in a non-tech test environment I would reach out or ask for clarifications around:
 
-- Extra icons - the API returns 9 possible icons, the Figma only shows 4 specific versions
-  - We'll just reuse the ones that are available for now, with extension of finding some better ones
-- How to parse the conditions?
-  - Since the `conditions` API field seems to be a set of joint descriptors - do we want the first? Do we want a priority order?
-  - We'll go with the last of the fields, as it seems to be the most descriptive from the data I've seen so far
-- Line Height in Figma seems to be 43.5 in most places, we'll ignore it
-- Would confirm rules around the degree symbols and rounding
-  - Is there a consistent rule for the grey colour?
-  - Assuming rounding is to the nearest whole number for both Celsius and Fahrenheit
-- Sunset / Sunrise rounding
-  - Here we'll just slice the seconds off, but I can imagine preferences towards rounding up/down, or direction depending on if it's rise/set
+- Icons: 23 from the [Figma File](https://www.figma.com/design/FNdVsOUJA53CWMW9mnraYk/Weather-App?node-id=24-1131&t=HRyfXZzr6mChHOCj-0), with API returning (from [Visual Crossing icon docs](https://www.visualcrossing.com/resources/documentation/weather-api/defining-icon-set-in-the-weather-api/))
 
-# Original Readme
+  - We use 16 with `icons2` option since `icons1` (9 slugs) doesn't have `showers-day` for Sun, 29 May
+  - There are then missing returns from icons2 which we'll fill in with closest options, see `iconLookup.ts` file for details on decisions
+  - Icon is used without its frame in the sidebar, we position it as we can, noting some taller icons may cause overlap
+
+- How should we best parse the `conditions`?
+  - The API `conditions` field is a list of descriptions - do we want the first? Do we want a priority order?
+  - We'll go with the first of the fields, as it seems to be the most descriptive
+- Line Height in Figma seems to be 43.5px in most places so we'll ignore it and focus on text placement
+- Months in date format: which is better, `Sun, 23 Nov` or `Sun, 23 November`?
+  - Shorter month makes for more consistent spacings so we'll go with that
+- I would confirm the rules around the temperature units & rounding:
+  - Is there a consistent rule for the grey colour?
+  - I'm assuming rounding is to the nearest whole number for both Celsius and Fahrenheit
+- Sunset / Sunrise rounding - several similar but possible options:
+  - Slice off the seconds (we're going with this)
+  - Rounding up/down consistently
+  - Round towards daytime (round sunrise up, round sunset down)
+  - Round towards nighttime (flipped)
+
+# Archived Readme
 
 ![image 1](https://github.com/echo724/notion2md/assets/78376735/6b880ad1-3ff2-4cdd-8d06-ff708314772d)
 

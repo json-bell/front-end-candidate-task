@@ -17,6 +17,7 @@ export async function fetchWeather(location: string): Promise<WeatherResponse> {
     `unitGroup=uk` +
     `&elements=cloudcover,conditions,datetime,humidity,icon,sunrise,sunset,temp,tempmax,tempmin` +
     `&include=days,current` +
+    `&iconSet=icons2` +
     `&key=${apiKey}` +
     `&contentType=json`;
 

@@ -7,7 +7,14 @@
  */
 export type WeatherIconSlug =
   | "snow"
+  | "snow-showers-day"
+  | "snow-showers-night"
+  | "thunder-rain"
+  | "thunder-showers-day"
+  | "thunder-showers-night"
   | "rain"
+  | "showers-day"
+  | "showers-night"
   | "fog"
   | "wind"
   | "cloudy"
