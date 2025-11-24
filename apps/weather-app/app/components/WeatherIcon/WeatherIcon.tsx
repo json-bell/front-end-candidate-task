@@ -5,13 +5,19 @@ interface WeatherIconProps {
   icon: WeatherIconSlug;
   /** Height and width of the icon */
   size?: string;
+  className?: string;
 }
 
-export default function WeatherIcon({ icon, size = "100%" }: WeatherIconProps) {
+export default function WeatherIcon({
+  icon,
+  size = "100%",
+  className,
+}: WeatherIconProps) {
   const alt = `A ${icon.replaceAll("-", " ")} weather icon`;
   const src = iconFileFromSlug(icon);
   return (
     <div
+      className={className}
       style={{
         width: size,
         aspectRatio: "1 / 1",

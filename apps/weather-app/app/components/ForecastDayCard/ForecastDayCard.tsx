@@ -21,7 +21,7 @@ export default function ForecastDayCard({
   return (
     <div className={styles.card}>
       <div className={styles.title}>{title}</div>
-      <WeatherIcon icon={icon} size={"144px"} />
+      <WeatherIcon icon={icon} size={"144px"} className={styles.icon} />
       <div className={styles.condition}>{condition}</div>
       <div className={styles.temperatures}>
         <span className={styles.tempmax}>{tempmax}</span>
