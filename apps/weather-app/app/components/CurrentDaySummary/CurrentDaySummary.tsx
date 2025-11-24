@@ -22,8 +22,10 @@ export default function CurrentDaySummary() {
         />
       </div>
       <span className={styles.temperature}>
-        {formatTemp(weatherData?.currentConditions.temp ?? 0)}{" "}
-        <span className={styles.degrees}>deg C</span>
+        {formatTemp(weatherData?.currentConditions.temp ?? 0, {
+          includeUnit: false,
+        })}
+        <span className={styles.degrees}>°C</span>
       </span>
       <span className={styles.condition}>
         {parsePrimaryCondition(weatherData?.currentConditions.conditions)}

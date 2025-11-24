@@ -10,9 +10,14 @@ export const useFormatTemperature = () => {
    * @param celsiusTemp - Temperature in Celsius
    * @returns Rounded temperature in unit decided according to context
    */
-  const formatTemperature = (celsiusTemp: number | undefined | null) => {
+  const formatTemperature = (
+    celsiusTemp: number | undefined | null,
+    options: {
+      includeUnit?: boolean;
+    } = {}
+  ): string => {
     if (celsiusTemp === undefined || celsiusTemp === null) return "-";
-    return celsiusToUnitStr(celsiusTemp, temperatureUnit);
+    return celsiusToUnitStr(celsiusTemp, temperatureUnit, options);
   };
 
   return formatTemperature;

@@ -18,9 +18,14 @@ export type TemperatureUnit = "celsius" | "fahrenheit";
  */
 export const celsiusToUnitStr = (
   celsius: number,
-  unit: TemperatureUnit
+  unit: TemperatureUnit,
+  { includeUnit = true }: { includeUnit?: boolean }
 ): string => {
   if (unit === "fahrenheit")
     throw new Error("Fahrenheit implementation pending");
-  return `${celsius}`;
+
+  const temp = `${Math.round(celsius)}`;
+
+  if (!includeUnit) return temp;
+  return `${temp}°C`;
 };
