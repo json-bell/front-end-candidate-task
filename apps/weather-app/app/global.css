@@ -15,14 +15,15 @@ body {
   background-color: var(--background);
   color: var(--text);
 
-  /* START COLOURS */
+  /* Tokenised Colours, with semantic indications for easier use */
   --background: #100e1d;
   --surface: #1e213a;
   --text: white;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --text-degrees: #cdcdcd;
 
-  --focus-outline: cyan;
+  /** Colour of the sun/moon, creates a good contrast with majority dark blue content */
+  --focus-outline: #ffa500;
 
   --button-stroke: black;
   --button-background: white;
@@ -39,7 +40,6 @@ body {
 
   --input-stroke: #111111;
   --input-background: #ffffff;
-  /* END COLOURS */
 }
 h1,
 h2,

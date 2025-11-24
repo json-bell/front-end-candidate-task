@@ -8,8 +8,8 @@
     height: 100%;
     border-radius: 5px;
     &:focus-visible {
-      outline: 2px solid var(--focus-outline);
-      outline-offset: 2px;
+      outline: 3px solid var(--focus-outline);
+      outline-offset: 3px;
     }
     font-family: inherit;
     font-size: 24px;
@@ -27,8 +27,8 @@
     height: 45px;
     width: 45px;
     &:focus-visible {
-      outline: 2px solid var(--focus-outline);
-      outline-offset: 2px;
+      outline: 3px solid var(--focus-outline);
+      outline-offset: 3px;
     }
     &:active {
       background-color: var(--button-active-background);
