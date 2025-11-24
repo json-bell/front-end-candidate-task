@@ -22,7 +22,9 @@ export default function SearchBar() {
           setSearchValue(e.target.value);
         }}
       />
-      <button type="submit">Go</button>
+      <button type="submit" aria-label="Search for weather data">
+        <img src={"/arrow.svg"} />
+      </button>
     </form>
   );
 }
